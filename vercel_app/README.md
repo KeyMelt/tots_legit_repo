@@ -1,63 +1,79 @@
 # Synthetic Eye Vercel App
 
-This folder contains the Vercel-safe web frontend for the hackathon build.
+This folder contains the lightweight Node.js frontend for the MSA_Hackathon project.
 
-## Why this app exists
+## Purpose
 
-- The original Flutter frontend remains untouched.
-- The backend remains the existing FastAPI app at the repo root.
-- This frontend is a separate Next.js project designed for Vercel deployment.
+The repository already contains a Flutter frontend, but `vercel_app/` exists as a lighter web deployment target:
 
-## Architecture
+- Flutter remains the original fuller client.
+- `vercel_app/` is the lightweight Next.js version built specifically for web deployment.
+- Both clients consume the same FastAPI backend.
 
-- Frontend: Next.js App Router in `vercel_app/`
-- Backend: FastAPI from repo root via `index.py`
-- Integration: browser HTTP calls to the existing backend API
+## Technical Stack
 
-## Local setup
+- Node.js
+- Next.js App Router
+- React
+- TypeScript
+- Vercel
 
-### 1. Create the frontend env file
+## Folder Structure
+
+```text
+vercel_app/
+  app/
+  components/
+  lib/
+  package.json
+  next.config.ts
+  vercel.json
+```
+
+## How It Operates
+
+1. The browser frontend collects user interaction and camera-driven workflow input.
+2. The frontend sends HTTP requests to the shared FastAPI backend.
+3. The backend performs recognition, enrollment, and result assembly.
+4. The frontend renders scan state, result detail, and history-oriented UI flows.
+
+This keeps the browser client thin and shifts business logic to the backend.
+
+## Local Setup
+
+Create the frontend env file:
 
 ```bash
 cd vercel_app
 cp .env.example .env.local
 ```
 
-### 2. Create the backend validation venv
+Run the frontend:
 
 ```bash
 cd vercel_app
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Workspace note:
-
-- In this workspace, `vercel_app/.venv` is linked to the repo root `.venv` because that environment already contains the backend stack.
-- Recreating the backend env from scratch may require adjusting local Python and native build tooling for the pinned face-recognition stack.
-
-### 3. Run the backend
-
-```bash
-cd /Users/ultramarine/Desktop/UniHackathon/MSA_Hackathon
-vercel_app/.venv/bin/python -m uvicorn main:app --reload
-```
-
-### 4. Run the frontend
-
-```bash
-cd /Users/ultramarine/Desktop/UniHackathon/MSA_Hackathon/vercel_app
 npm install
 npm run dev
 ```
 
-## Vercel deployment
+Run the backend from the repository root:
+
+```bash
+.venv/bin/python -m uvicorn main:app --reload
+```
+
+## Deployment
 
 Recommended deploy shape:
 
-1. Create one Vercel project for the backend from the repo root.
-2. Create a second Vercel project for the frontend with root directory set to `vercel_app`.
-3. Set `NEXT_PUBLIC_API_BASE_URL` in the frontend project to the deployed backend URL.
+1. Deploy the backend from the repository root.
+2. Deploy `vercel_app/` as a separate Vercel project.
+3. Set `NEXT_PUBLIC_API_BASE_URL` to the deployed backend URL.
 
-This keeps the existing backend unchanged and makes the frontend Vercel-native.
+## Demo Videos
+
+See the repository-level demo assets:
+
+- `../demos/demo-mobile.mp4`
+- `../demos/demo-web.mp4`
+
