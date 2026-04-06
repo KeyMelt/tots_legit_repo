@@ -18,6 +18,9 @@ migrate_working_dir/
 *.iws
 .idea/
 
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
 #.vscode/
 
 # Flutter/Dart/Pub related
@@ -41,6 +44,11 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Backend archive
-backend/archive/
-backend/archive.zip
+
+backend/known_people/Yousef Amr
+backend/known_people/Yousef Gabr
+backend/known_people/Youssef Azzam
+backend/known_people/Raya El Said
+backend/known_people/Omar Mohamed
+backend/known_people/Hady Sherif
+backend/known_people/ahmed Elsaid
