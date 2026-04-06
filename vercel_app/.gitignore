@@ -1,0 +1,22 @@
+.vercel
+.next/
+node_modules/
+.tools/
+.venv
+.cache/
+.home/
+.npm-cache/
+.playwright-browsers/
+tsconfig.tsbuildinfo
+.DS_Store
+__pycache__/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/data/scan_history.json
+backend/known_people/Hady Sherif/
+backend/known_people/Omar Mohamed/
+backend/known_people/Raya El Said/
+backend/known_people/Yousef Gabr/
+backend/known_people/Youssef Azzam/
+backend/known_people/Yousef Amr/
+backend/known_people/ahmed Elsaid/
